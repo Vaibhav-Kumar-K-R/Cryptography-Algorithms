@@ -6,9 +6,10 @@ class affine{
             return a;
         return gcd(b,a%b);
     }
+    
     public static int modinverse(int b ){
         if(gcd(26,b)!=1){
-            System.out.println("gcd is not 1 !!");
+            System.out.println("gcd of "+b+" and 26 is not 1 !!");
             return -1;
         }
         int r1=26;
@@ -17,7 +18,7 @@ class affine{
         int t2=1;
         int  b_inverse=0;
         while(r2>0){
-            int q=r1/r2;
+           int q=r1/r2;
            int r=r1-(q*r2);
            r1=r2;
            r2=r;
@@ -52,8 +53,8 @@ class affine{
             return "Inverse does not exist!!";
         }
         for(int i=0;i<cipher.length();i++){
-               int C=cipher.charAt(i)-'A';
-               int P=(a_inverse*(C-b)%26);
+              int C=cipher.charAt(i)-'A';
+              int P=(a_inverse*(C-b)%26);
               P=P<0?P+26:P;
               message+=(char)(97+P);
         }
@@ -78,6 +79,5 @@ class affine{
      String cipher=sc.next();
      System.out.println(decrypt(cipher, a, b));
      sc.close();
-      
     }
 }
