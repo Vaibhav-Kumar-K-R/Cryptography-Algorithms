@@ -35,10 +35,16 @@ class affine{
         return b_inverse<0?b_inverse+26:b_inverse;
     }
     public static String encrypt(String message,int a,int b){
+        System.out.println(message);
         message=message.toLowerCase();//message is always given in lower case characters
         String cipherResult="";
         for(int i=0;i<message.length();i++){
-            int P=message.charAt(i)-'a';
+            char ch=message.charAt(i);
+            if(ch==' '){
+                cipherResult+=' ';
+                continue;
+            }
+            int P=ch-'a';
             int C=(P*a+b)%26;
             cipherResult+=(char)(C+97);      
         }
@@ -53,7 +59,12 @@ class affine{
             return "Inverse does not exist!!";
         }
         for(int i=0;i<cipher.length();i++){
-              int C=cipher.charAt(i)-'A';
+              char ch=cipher.charAt(i);
+              if(ch==' '){
+                message+=' ';       
+                continue;       
+              }
+              int C=ch-'A';
               int P=(a_inverse*(C-b)%26);
               P=P<0?P+26:P;
               message+=(char)(97+P);
@@ -72,11 +83,12 @@ class affine{
             sc.close();
             return;
         }
+        sc.nextLine();
      System.out.println("Enter the message:");
-     String message=sc.next();
+     String message=sc.nextLine();
      System.out.println(encrypt(message, a, b));
      System.out.println("Enter the cipher obtained on encryption:");
-     String cipher=sc.next();
+     String cipher=sc.nextLine();
      System.out.println(decrypt(cipher, a, b));
      sc.close();
     }
