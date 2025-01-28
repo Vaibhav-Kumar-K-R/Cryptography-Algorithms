@@ -21,9 +21,9 @@ public class RSA {
             e = e.add(BigInteger.ONE);
         }
 
-        System.out.println("Public key is " + e);
+        
         d = e.modInverse(phi);
-        System.out.println("Private key is " + d);
+    
     }
 
     public static void main(String[] args) throws IOException {
