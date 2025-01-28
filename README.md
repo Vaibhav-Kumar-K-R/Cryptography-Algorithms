@@ -8,7 +8,7 @@ This project is a collection of cryptographic algorithms implemented in Java. It
 ## Algorithms Implemented
 
 1. **Affine Cipher**  
-2. **Vigenère Cipher**  
+2. **Vigenere Cipher**  
 3. **Extended Euclidean Algorithm**
 4. **RSA Encryption & Decryption**  
 5. **El-Gamal Encryption & Decryption**  
