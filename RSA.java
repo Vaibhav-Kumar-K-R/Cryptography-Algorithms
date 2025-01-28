@@ -11,8 +11,6 @@ public class RSA {
         r = new Random();
         p = BigInteger.probablePrime(bitLength, r);
         q = BigInteger.probablePrime(bitLength, r);
-        System.out.println("Prime number p is " + p);
-        System.out.println("Prime number q is " + q);
         N = p.multiply(q);
         phi = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
         e = BigInteger.probablePrime(bitLength / 2, r);
