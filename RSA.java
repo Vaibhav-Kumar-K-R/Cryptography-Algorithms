@@ -19,9 +19,7 @@ public class RSA {
             e = e.add(BigInteger.ONE);
         }
 
-        
         d = e.modInverse(phi);
-    
     }
 
     public static void main(String[] args) throws IOException {
@@ -32,6 +30,12 @@ public class RSA {
 
         System.out.println("Encrypting string: " + testString);
         ArrayList<BigInteger> encrypted = rsa.encrypt(testString);
+
+        System.out.print("Encrypted message (as numbers): ");
+        for (BigInteger encryptedChar : encrypted) {
+            System.out.print(encryptedChar + " ");
+        }
+        System.out.println();
 
         String decrypted = rsa.decrypt(encrypted);
         System.out.println("Decrypted string: " + decrypted);
@@ -44,11 +48,11 @@ public class RSA {
             int charValue;
 
             if (Character.isLetter(c)) {
-                charValue = c - 'a'; 
+                charValue = c - 'a';
             } else if (Character.isDigit(c)) {
-                charValue = c - '0' + 26; 
+                charValue = c - '0' + 26;
             } else if (c == ' ') {
-                charValue = 36; 
+                charValue = 36;
             } else {
                 throw new IllegalArgumentException("Only lowercase letters, digits, and spaces are allowed.");
             }
@@ -66,11 +70,11 @@ public class RSA {
             int charValue = decryptedCharValue.intValue();
 
             if (charValue >= 0 && charValue <= 25) {
-                decrypted.append((char) (charValue + 'a')); 
+                decrypted.append((char) (charValue + 'a'));
             } else if (charValue >= 26 && charValue <= 35) {
                 decrypted.append((char) (charValue - 26 + '0'));
             } else if (charValue == 36) {
-                decrypted.append(' '); 
+                decrypted.append(' ');
             } else {
                 throw new IllegalArgumentException("Decrypted value out of range.");
             }
